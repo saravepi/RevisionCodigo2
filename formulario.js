@@ -1,42 +1,49 @@
-var formulario = document.querySelector("#form")
+// Para declarar las variables se utlizó let ¡¡VAR YA NO SE USA EDUARDO!!
+// Se agregó un ; a las líneas que lo requieren
+let formulario = document.querySelector(".formulario"); // Se cambia a clase y se corrige el nombre de la clase
 
-formulario.onsubmit = function(e) {
 
-  e.prevent();
+formulario.addEventListener = function(e) { // Por seintaxis se agrega addEventListener 
+
+  e.preventDefault(); // Se agregó el preventDefault puesto que forma parte de la sintáxis
   
-  var n = formulario.elements[0]
-  var e = formulario.elements[1]
-  var na = formulario.elements[2]
+  // Cambio en el nombre de variables para mayor legibilidad
+  let name = formulario.elements[0];
+  let age = formulario.elements[1];
+  let nationality = formulario.elements[2];
 
-  var nombre = n.value
-  var edad = e.value
+  let nombre = name.value;
+  let edad = age.value;
 
-  var i = na.selectedIndex
-  var nacionalidad = na.options[i].value
-  console.log(nombre, edad)
-  console.log(nacionalidad)
+  let i = nationality.selectedIndex;
+  let nacionalidad = nationality.options[i].value;
+  //console.log(nombre, edad) Se comentan para una mayor legibilidad, se utiliza para saber si esta funcionando el código en la consola
+  //console.log(nacionalidad)
 
   if (nombre.length === 0) {
-    n.classList.add("error")
+    name.classList.add("error");
   }
   if (edad < 18 || edad > 120) {
-    e.classList.add("error")
+    age.classList.add("error");
   }
 
-if (nombre.length > 0 
-  && (edad > 18 
-    && edad < 120) ) {
-  agregarInvitado(nombre, edad, nacionalidad)
+if (nombre.length > 0 && (edad > 18 && edad < 120) ) {
+  agregarInvitado(nombre, edad, nacionalidad);
   }
 }
 
-var botonBorrar = document.createElement("button")
+/* Se eliminó esta parte del botón de eliminar invitado porque esta doble, para una mayor 
+legibilidad se deja esta parte del código al final
+let botonBorrar = document.createElement("button")
 botonBorrar.textContent = "Eliminar invitado"
 botonBorrar.id = "boton-borrar"
-var corteLinea = document.createElement("br")
+
+let corteLinea = document.createElement("br")
 document.body.appendChild(corteLinea)
 document.body.appendChild(botonBorrar);
+*/
 
+// Agregar invitado
 function agregarInvitado(nombre, edad, nacionalidad) {
 
   if (nacionalidad === "ar") {
@@ -52,46 +59,49 @@ function agregarInvitado(nombre, edad, nacionalidad) {
     nacionalidad = "Peruana"
   }
 
-var lista = document.getElementById("lista-de-invitados")
+let lista = document.getElementById(".lista-de-invitados"); // Se agregó el . puesto que es un Id
 
-var elementoLista = document.createElement("div")
-elementoLista.classList.added("elemento-lista")
-lista.appendChild(elementoLista)
+let elementoLista = document.createElement("div");
+elementoLista.classList.add("elemento-lista"); // es add
+lista.appendChild(elementoLista);
 
-var spanNombre = document.createElement("span")
-var inputNombre = document.createElement("input")
-var espacio = document.createElement("br")
+/* Se eliminaría esta parte puesto que esta repetida en las siguientes líneas, aunque no estoy segura porque son diferentes en la línea 68 y 69
+
+let spanNombre = document.createElement("span")
+let inputNombre = document.createElement("input")
+let espacio = document.createElement("br")
 spanNombre.textContent = "Nombre: "
 inputNombre.value = nombre 
 elementoLista.appendChild(spanNombre)
 elementoLista.appendChild(inputNombre)
 elementoLista.appendChild(espacio)
+*/
 
 function crearElemento(descripcion, valor) {
-var spanNombre = document.createElement("span")
-var inputNombre = document.createElement("input")
-var espacio = document.createElement("br")
+let spanNombre = document.createElement("span");
+let inputNombre = document.createElement("input");
+let espacio = document.createElement("br");
 spanNombre.textContent = descripcion + ": "
-inputNombre.value = valor 
-elementoLista.appendChild(spanNombre)
-elementoLista.appendChild(inputNombre)
-elementoLista.appendChild(espacio)
+inputNombre.value = valor ;
+elementoLista.appendChild(spanNombre);
+elementoLista.appendChild(inputNombre);
+elementoLista.appendChild(espacio);
 }
 
-crearElemento("Nombre", nombre)
-crearElemento("Edad", edad)
-crearElemento("Nacionalidad", nacionalidad)
+crearElemento("Nombre", nombre);
+crearElemento("Edad", edad);
+crearElemento("Nacionalidad", nacionalidad);
 
 
-var botonBorrar = document.createElement("button")
+let botonBorrar = document.createElement("button");
 botonBorrar.textContent = "Eliminar invitado"
 botonBorrar.id = "boton-borrar"
-var corteLinea = document.createElement("br")
-elementoLista.appendChild(corteLinea)
+let corteLinea = document.createElement("br");
+elementoLista.appendChild(corteLinea);
 elementoLista.appendChild(botonBorrar);
 
  botonBorrar.onclick = function() {
-// this.parentNode.style.display = 'none';
-botonBorrar.parentNode.remove()
+this.parentNode.style.display = 'none';
+botonBorrar.parentNode.remove();
   }
 }

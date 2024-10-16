@@ -14,9 +14,9 @@
 
   <form class="formulario">
     Nombre <input type="text" name="name" id="name">
-    <br />
+    <br> <!--Los br no llevan / al final, es un salto de línea en el texto-->
     Edad <input type="number" name="age" id="age">
-    <br />
+    <br> <!--Los br no llevan / al final-->
 
     Nacionalidad
     <select name="nationality" id="nationality">
@@ -25,16 +25,16 @@
       <option value="per">Peruana</option>
       <option value="vnzl">Venezolana</option>
     </select>
-    <br />
+    <br> <!--Los br no llevan / al final-->
     <input type="submit">
   </form>
 
-  <div>
-    <h2>Lista de invitados</h2>
+  <div id="lista-de-invitados"> <!--Se agregó el id a la etiqueta div-->
+    <h2>Lista de invitados</h2> 
 
   </div>
 
-  <script src="../formulario.js"></script>
+  <script src="formulario.js"></script> <!--Se quitó el .. en el enlace al arcivo js-->
 </body>
 
 </html>
