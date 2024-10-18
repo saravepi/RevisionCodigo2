@@ -3,10 +3,11 @@
 let formulario = document.querySelector(".formulario"); // Se cambia a clase y se corrige el nombre de la clase
 
 
-formulario.addEventListener = function(e) { // Por seintaxis se agrega addEventListener 
+
+formulario.onsubmit = function (e) { // se agregó onsubmit
 
   e.preventDefault(); // Se agregó el preventDefault puesto que forma parte de la sintáxis
-  
+
   // Cambio en el nombre de variables para mayor legibilidad
   let name = formulario.elements[0];
   let age = formulario.elements[1];
@@ -27,13 +28,13 @@ formulario.addEventListener = function(e) { // Por seintaxis se agrega addEventL
     age.classList.add("error");
   }
 
-if (nombre.length > 0 && (edad > 18 && edad < 120) ) {
-  agregarInvitado(nombre, edad, nacionalidad);
+  if (nombre.length > 0 && edad > 18 && edad < 120) {
+    agregarInvitado(nombre, edad, nacionalidad);
   }
-}
+};
 
-/* Se eliminó esta parte del botón de eliminar invitado porque esta doble, para una mayor 
-legibilidad se deja esta parte del código al final
+
+/* Se eliminó esta parte del botón de eliminar invitado porque esta doble
 let botonBorrar = document.createElement("button")
 botonBorrar.textContent = "Eliminar invitado"
 botonBorrar.id = "boton-borrar"
@@ -59,7 +60,7 @@ function agregarInvitado(nombre, edad, nacionalidad) {
     nacionalidad = "Peruana"
   }
 
-let lista = document.getElementById(".lista-de-invitados"); // Se agregó el . puesto que es un Id
+let lista = document.getElementById("lista-de-invitados"); 
 
 let elementoLista = document.createElement("div");
 elementoLista.classList.add("elemento-lista"); // es add
@@ -78,9 +79,11 @@ elementoLista.appendChild(espacio)
 */
 
 function crearElemento(descripcion, valor) {
+
 let spanNombre = document.createElement("span");
 let inputNombre = document.createElement("input");
 let espacio = document.createElement("br");
+
 spanNombre.textContent = descripcion + ": "
 inputNombre.value = valor ;
 elementoLista.appendChild(spanNombre);
@@ -92,16 +95,18 @@ crearElemento("Nombre", nombre);
 crearElemento("Edad", edad);
 crearElemento("Nacionalidad", nacionalidad);
 
-
+// Agreamod boton de borrar
 let botonBorrar = document.createElement("button");
 botonBorrar.textContent = "Eliminar invitado"
 botonBorrar.id = "boton-borrar"
+
 let corteLinea = document.createElement("br");
 elementoLista.appendChild(corteLinea);
 elementoLista.appendChild(botonBorrar);
 
+
  botonBorrar.onclick = function() {
-this.parentNode.style.display = 'none';
+// this.parentNode.style.display = 'none';
 botonBorrar.parentNode.remove();
   }
 }
