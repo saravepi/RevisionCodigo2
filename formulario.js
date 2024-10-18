@@ -95,7 +95,7 @@ crearElemento("Nombre", nombre);
 crearElemento("Edad", edad);
 crearElemento("Nacionalidad", nacionalidad);
 
-// Agreamod boton de borrar
+// Agregamos botón de borrar
 let botonBorrar = document.createElement("button");
 botonBorrar.textContent = "Eliminar invitado"
 botonBorrar.id = "boton-borrar"
